@@ -17,7 +17,7 @@ def get_tar_files(directory="downloads"):
         tar_files = list(path.glob("*.tar"))
     return tar_files
 
-def extract_tar_with_progress(tar_path, extract_to="extracted"):
+def extract_tar_with_progress(tar_path, extract_to="dataset"):
     """Extract a tar file with progress bar"""
     extract_path = Path(extract_to)
     extract_path.mkdir(exist_ok=True)
@@ -36,7 +36,7 @@ def extract_tar_with_progress(tar_path, extract_to="extracted"):
     print(f"Extracted {tar_name} to {extract_path}")
     return True
 
-def extract_all_tars(downloads_dir="downloads", extract_to="extracted"):
+def extract_all_tars(downloads_dir="downloads", extract_to="dataset"):
     """Extract all tar files in downloads directory"""
     tar_files = get_tar_files(downloads_dir)
     
@@ -61,7 +61,7 @@ def extract_all_tars(downloads_dir="downloads", extract_to="extracted"):
     
     return results
 
-def extract_specific_files(filenames, downloads_dir="downloads", extract_to="extracted"):
+def extract_specific_files(filenames, downloads_dir="downloads", extract_to="dataset"):
     """Extract specific tar files by name"""
     results = {}
     
@@ -93,5 +93,5 @@ def list_tar_contents(tar_path):
             print(f"  ... and {len(members) - 10} more files")
 
 if __name__ == "__main__":
-    extract_all_tars("downloads", "extracted")
+    extract_all_tars("downloads", "dataset")
     
