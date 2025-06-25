@@ -4,10 +4,8 @@ Dataset extraction utility
 """
 
 import tarfile
-import os
 from pathlib import Path
 from tqdm import tqdm
-import json
 
 def get_tar_files(directory="downloads"):
     """Get all tar files in the specified directory"""
@@ -19,8 +17,8 @@ def get_tar_files(directory="downloads"):
 
 def extract_tar_with_progress(tar_path, extract_to="dataset"):
     """Extract a tar file with progress bar"""
-    extract_path = Path(extract_to)
-    extract_path.mkdir(exist_ok=True)
+    dataset_path = Path(extract_to)
+    dataset_path.mkdir(exist_ok=True)
     
     tar_name = tar_path.name
     print(f"Extracting {tar_name}...")
@@ -30,10 +28,10 @@ def extract_tar_with_progress(tar_path, extract_to="dataset"):
         
         with tqdm(total=len(members), desc=tar_name, unit='file') as pbar:
             for member in members:
-                tar.extract(member, path=extract_path)
+                tar.extract(member, path=dataset_path)
                 pbar.update(1)
     
-    print(f"Extracted {tar_name} to {extract_path}")
+    print(f"Extracted {tar_name} to {dataset_path}")
     return True
 
 def extract_all_tars(downloads_dir="downloads", extract_to="dataset"):
@@ -94,4 +92,4 @@ def list_tar_contents(tar_path):
 
 if __name__ == "__main__":
     extract_all_tars("downloads", "dataset")
-    
+    #extract_specific_files(["sav_000.tar"], "downloads", "dataset")

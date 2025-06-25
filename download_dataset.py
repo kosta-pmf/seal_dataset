@@ -6,7 +6,6 @@ import requests
 from pathlib import Path
 import json
 from tqdm import tqdm
-from convert_dataset_links import convert_tsv_to_json
 
 def load_dataset_links(json_file="dataset_links.json"):
     """Load dataset links from JSON file"""
@@ -63,7 +62,6 @@ def list_available_files(links_file="dataset_links.json"):
     return list(dataset_links.keys())
 
 if __name__ == "__main__":
-    convert_tsv_to_json()
     files = list_available_files()
     print(f"Available files: {len(files)}")
     for f in files[:5]:  # Show first 5
