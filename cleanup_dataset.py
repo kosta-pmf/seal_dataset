@@ -57,7 +57,7 @@ def cleanup_extracted(extract_dir="extracted", dry_run=False, keep_extensions=No
         return
     
     if dry_run:
-        print("\n=== DRY RUN - Files that would be removed: ===")
+        print("=== DRY RUN - Files that would be removed: ===")
         for file_path in remove_files[:20]:  # Show first 20
             print(f"  {file_path}")
         if len(remove_files) > 20:
